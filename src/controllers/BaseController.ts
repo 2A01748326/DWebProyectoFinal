@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import AbstractController from "./AbstractController";
+import * as path from 'path';
 
 export default class BaseController extends AbstractController{
 
@@ -18,7 +19,7 @@ export default class BaseController extends AbstractController{
     private crearRegistro(req:Request, res:Response){
         try{
             console.log("Formulario desplegado");
-            res.status(200).sendFile("../views/form1.html");
+            res.status(200).sendFile(path.join(__dirname, '..', 'views', 'form1.html'));
         }catch(err:any){
             console.log(err);
             res.status(500).send("Error");
