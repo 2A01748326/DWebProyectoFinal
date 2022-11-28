@@ -3,6 +3,7 @@ import {PORT, NODE_ENV} from "./config"
 import express from 'express';
 import cors from 'cors';
 import BaseController from "./controllers/BaseController";
+import ModeloController from "./controllers/ModeloController";
 
 const app = new Server({
     port:PORT,
@@ -13,7 +14,8 @@ const app = new Server({
         cors()
     ],
     controllers: [
-        BaseController.getInstance()
+        BaseController.getInstance(),
+        ModeloController.getInstance()
     ]
 });
 

@@ -1,6 +1,7 @@
 //const express = require('express')//NodeJS
 import express, { Response } from 'express'
 import AbstractController from '../controllers/AbstractController';
+import db from '../models';
 
 class Server{
     //Atributos de la clase
@@ -15,6 +16,7 @@ class Server{
         this.env = appInit.env;
         this.loadMiddleware(appInit.middlewares);
         this.routes(appInit.controllers);
+        this.connectDB();
     }
 
     //Cargar los middlewares
@@ -22,6 +24,10 @@ class Server{
         middlewares.forEach((middleware:any)=>{
             this.app.use(middleware);
         });
+    }
+
+    private async connectDB(){
+        await db.sequelize.sync();
     }
 
     private routes(controllers:AbstractController[]):void{
