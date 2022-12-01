@@ -1,9 +1,6 @@
 import { Request, Response } from "express";
 import AbstractController from "./AbstractController";
-import * as path from "path";
 import db from "../models";
-import * as fs from 'fs';
-const { parse } = require("csv-parse");
 
 class BaseController extends AbstractController{
 
@@ -33,26 +30,6 @@ class BaseController extends AbstractController{
             console.log(err);
             res.status(500).send("Error");
         }
-    }
-    private async postCrearRegistros(req:Request, res:Response){
-        fs.createReadStream("./data.csv")
-        .pipe(parse({ delimiter: ",", from_line: 2 }))
-        .on("data", function (row:any) {
-            console.log(row);
-            res.status(200).send(row);
-
-        })
-        /*
-        try{
-            console.log(req.body);
-            await db.Registro.bulkCreate();
-            console.log("Registro exitoso")
-            res.status(200).send("Registros exitoso");
-        }catch(err:any){
-            console.log(err);
-            res.status(500).send("Error");
-        }
-        */
     }
 
     private async getConsultarRegistros(req:Request, res:Response){
