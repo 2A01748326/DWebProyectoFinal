@@ -20,11 +20,11 @@ class ModeloController extends AbstractController{
     private async getPredecir(req:Request, res:Response){
         try{
             //console.log(req.body);
-            //await res.redirect('http://localhost:8081/modelo');
+            await res.redirect('http://localhost:8081/modelo');
             //res.sendFile(path.join(__dirname, '.', 'form1.html'));
             console.log("Se logro")
-            //res.status(200).send("Registro exitoso");
-            res.status(200).sendFile(path.join(__dirname, '..', 'form1.html'));
+            res.status(200).send("Registro exitoso");
+            //res.status(200).sendFile(path.join(__dirname, '..', 'form1.html'));
         }catch(err:any){
             console.log(err);
             res.status(500).send("Error");
