@@ -14,7 +14,6 @@ class BaseController extends AbstractController{
     }
     protected initRouters(): void{
         this.router.post(`/crearRegistro`, this.postCrearRegistro.bind(this));
-        this.router.post(`/crearRegistros`, this.postCrearRegistros.bind(this));
         this.router.get(`/consultarRegistros`, this.getConsultarRegistros.bind(this));
         this.router.post(`/consultarRegistro`, this.getConsultarRegistro.bind(this));
         this.router.post(`/eliminarRegistro`, this.postEliminarRegistro.bind(this));
