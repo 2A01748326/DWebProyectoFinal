@@ -14,8 +14,9 @@ class BaseController extends AbstractController{
     }
     protected initRouters(): void{
         this.router.post(`/crearRegistro`, this.postCrearRegistro.bind(this));
+        this.router.post(`/crearRegistros`, this.postCrearRegistros.bind(this));
         this.router.get(`/consultarRegistros`, this.getConsultarRegistros.bind(this));
-        this.router.get(`/consultarRegistro`, this.getConsultarRegistro.bind(this));
+        this.router.post(`/consultarRegistro`, this.getConsultarRegistro.bind(this));
         this.router.post(`/eliminarRegistro`, this.postEliminarRegistro.bind(this));
     }
 
@@ -25,6 +26,17 @@ class BaseController extends AbstractController{
             await db.Registro.create(req.body);
             console.log("Registro exitoso")
             res.status(200).send("Registro exitoso");
+        }catch(err:any){
+            console.log(err);
+            res.status(500).send("Error");
+        }
+    }
+    private async postCrearRegistros(req:Request, res:Response){
+        try{
+            console.log(req.body);
+            await db.Registro.bulkCreate(req.body);
+            console.log("Registro exitoso")
+            res.status(200).send("Registros exitoso");
         }catch(err:any){
             console.log(err);
             res.status(500).send("Error");
