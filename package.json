@@ -19,7 +19,9 @@
   },
   "homepage": "https://github.com/2A01748326/DWebProyectoFinal#readme",
   "dependencies": {
+    "convert-csv-to-json": "^1.4.0",
     "cors": "^2.8.5",
+    "csv": "^6.2.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "mysql2": "^2.3.3",
